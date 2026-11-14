@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  flex: 1;
+  width: 100%;
+  resize: none;
+  box-sizing: border-box;
+  padding: 16px;
+  outline: 0;
+  border: 1px solid lightgray;
+}
+
+mat-error {
+  font-size: 12px;
+  padding-left: 16px;
+}

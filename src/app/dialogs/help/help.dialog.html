@@ -1,0 +1,106 @@
+<h1 mat-dialog-title>Help</h1>
+<div mat-dialog-content ngNonBindable>
+  <div class="help-text">
+    Create templates using
+    <a href="https://github.com/janl/mustache.js">mustache</a>. You can use tags for variables,
+    sections, inverted sections, partials, custom delimiters and partials.
+    <h3>Variables</h3>
+    Render variables by placing the key between double braces (curly brackets or
+    <i>mustaches</i>).<br />
+    <i>Data:</i>
+    <pre>
+ &#123; "song" : "Otherside", "album" : &#123; "name" : "Californication" &#125; &#125;</pre
+    >
+    <i>Templates:</i>
+    <pre>
+ * {{ song }}
+ * {{ artist }}
+ * {{ album.name }}</pre
+    >
+    <i>Outputs:</i>
+    <pre>
+ * Otherside
+ *
+ * Californication</pre
+    >
+    All variables are HTML-escaped by default. If you want to render unescaped HTML, use triple
+    braces or an ampersand.<br />
+    <i>Data:</i>
+    <pre> &#123; "html" : "&lt;b&gt;bold text&lt;/b&gt;" &#125;</pre>
+    <i>Templates:</i>
+    <pre>
+ * {{ html }}
+ * {{&#123; html }}&#125;
+ * {{& html }}</pre
+    >
+    <i>Outputs:</i>
+    <pre>
+ * &lt;b&gt;bold text&lt;/b&gt;
+ * <b>bold text</b>
+ * <b>bold text</b></pre>
+    <h3>Sections</h3>
+    Sections are rendered only if a variable is
+    <a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy"><i>truthy</i></a>
+    and not an empty list. In case of lists a section is rendered once for each
+    <br />
+    <i>Data:</i>
+    <pre>
+ &#123; "numbers": [1, 2, 3], "items": [], "beatles": [
+     &#123; "firstName": "John", "lastName": "Lennon" &#125;,
+     &#123; "firstName": "Paul", "lastName": "McCartney" &#125;,
+     &#123; "firstName": "George", "lastName": "Harrison" &#125;,
+     &#123; "firstName": "Ringo", "lastName": "Starr" &#125;
+   ]
+ &#125; </pre
+    >
+    <i>Template:</i>
+    <pre>
+ * {{#numbers}}{{.}}, {{/numbers}}
+ * {{#items}}Not rendered.{{/items}}
+ * {{#beatles}}{{ firstName }} {{ lastName }}, {{/beatles}}</pre
+    >
+    <i>Output:</i>
+    <pre>
+ * 1, 2, 3,
+ *
+ * John Lennon, Paul McCartney, George Harrison, Ringo Starr,</pre
+    >
+    <h3>Inverted sections</h3>
+    Inverted sections are rendered only if a variable is
+    <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy"><i>falsy</i></a>
+    or an empty list.<br />
+    <i>Data:</i>
+    <pre> &#123; "items": [] &#125; </pre>
+    <i>Template:</i>
+    <pre> {{^items}}No items.{{/items}}</pre>
+    <i>Output:</i>
+    <pre> No items.</pre>
+    <h3>Partials</h3>
+    Include other templates using partials. Use an id to specify a template.<br />
+    <i>Template:</i>
+    <pre> {{> 2 }}</pre>
+    <h3>Custom Delimiters</h3>
+    You can replace curly brackets with custom delimiters.<br />
+    <i>Data:</i>
+    <pre> &#123; "key" : "value" &#125;</pre>
+    <i>Template:</i>
+    <pre>
+ * {{=[[ ]]=}} [[ key ]] [[={{&nbsp;}}=]]
+ * {{=[[ ]]=}} {{ key }} [[={{&nbsp;}}=]]</pre
+    >
+    <i>Output:</i>
+    <pre>
+ * value
+ * {{ key }}</pre
+    >
+    <h3>Comments</h3>
+    Comments start with an exclamation mark.<br />
+    <i>Template:</i>
+    <pre> {{! Comments are }}ignored</pre>
+    <i>Output:</i>
+    <pre>ignored</pre>
+  </div>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button matButton color="primary" mat-dialog-close>Close</button>
+</div>

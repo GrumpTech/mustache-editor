@@ -1,0 +1,28 @@
+<matx-panel class="editor" [fullHeight]="true" headerTitle="Code">
+  <matx-panel-header-button
+    icon="code"
+    tooltip="Code"
+    (click)="setEditable(true)"
+    [selected]="editable()"
+  />
+  <matx-panel-header-button
+    icon="visibility"
+    tooltip="Preview"
+    (click)="setEditable(false)"
+    [selected]="!editable()"
+  />
+  <matx-panel-header-button icon="help" tooltip="Help" (click)="showHelp()" [selected]="false" />
+
+  @if (editable()) {
+    <app-mustache-editor [tab]="tab()" />
+  } @else {
+    <app-preview [content]="renderedContent()"></app-preview>
+  }
+</matx-panel>
+<matx-panel class="variables" [fullHeight]="true" headerTitle="Variables">
+  <app-variables
+    [tab]="tab()"
+    [rendering]="!this.editable()"
+    (renderContent)="renderContent($event)"
+  ></app-variables>
+</matx-panel>

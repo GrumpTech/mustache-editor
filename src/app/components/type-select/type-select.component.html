@@ -1,0 +1,20 @@
+<mat-form-field (click)="handleClick()">
+  <mat-label>{{ label() }}</mat-label>
+  <input matInput [matAutocomplete]="autocomplete" spellcheck="false" [formControl]="control()" />
+  @if (showClearButton() && control().value) {
+    <mat-icon aria-label="Clear" (click)="clear($event)" matSuffix>close</mat-icon>
+  }
+  <mat-autocomplete
+    autoActiveFirstOption
+    hideSingleSelectionIndicator
+    class="type-select-full-width"
+    #autocomplete="matAutocomplete"
+  >
+    @for (option of filteredOptions | async; track option) {
+      <mat-option [value]="option.label">
+        <span class="option-label">{{ option.label }}</span>
+      </mat-option>
+    }
+  </mat-autocomplete>
+  <mat-error>Select value from list</mat-error>
+</mat-form-field>

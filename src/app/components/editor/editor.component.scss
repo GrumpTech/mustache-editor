@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  height: 100%;
+  &.hidden {
+    display: none;
+  }
+}
+
+.editor {
+  flex: 2;
+  max-height: 100%;
+}
+.variables {
+  flex: 1;
+}

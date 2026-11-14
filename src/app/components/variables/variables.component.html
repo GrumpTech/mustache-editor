@@ -1,0 +1,30 @@
+<div class="input">
+  <app-type-select
+    label="Layout"
+    [control]="this.form.controls.layout"
+    [options]="(layouts | async) ?? []"
+    [allowEmpty]="true"
+    (validChange)="handleValidLayoutChange($event)"
+  >
+  </app-type-select>
+  <mat-checkbox
+    [formControl]="form.controls.includePartials"
+    (change)="handleIncludePartialChange($event.checked)"
+  >
+    Include partials
+  </mat-checkbox>
+  <div class="json-data-icons">
+    <div class="space"></div>
+    <button mat-icon-button title="Generate test data" (click)="generateData()">
+      <mat-icon>arrow_downward</mat-icon>
+    </button>
+    <button mat-icon-button title="Clear" (click)="clearData()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <app-json-editor
+    [control]="form.controls.testData"
+    (validChange)="handleValidJsonChange()"
+    class="json-editor"
+  ></app-json-editor>
+</div>

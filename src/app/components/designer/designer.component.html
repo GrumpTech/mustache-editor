@@ -1,0 +1,12 @@
+<app-menu-bar (commandReceived)="handleCommand($event)" />
+<matx-editor-app
+  [convertFn]="convert"
+  [convertBackFn]="convertBack"
+  extension="mustache"
+  defaultContent=""
+  [onCommand]="onFileCommand"
+>
+  @for (tab of tabs(); track `${tab.modificationState}${tab.filename}`; let index = $index) {
+    <app-editor [hidden]="tab !== selectedTab()" [tab]="tab" />
+  }
+</matx-editor-app>

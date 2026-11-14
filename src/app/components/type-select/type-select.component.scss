@@ -1,0 +1,14 @@
+mat-form-field {
+  width: 100%;
+}
+mat-icon {
+  cursor: pointer;
+}
+.option-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.option-value {
+  color: gray;
+}
