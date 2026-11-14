@@ -1,59 +1,47 @@
-# TemplateEditor
+# Mustache Editor
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+Mustache Editor is a browser-based workspace for creating and previewing [Mustache](https://github.com/janl/mustache.js) templates. Edit templates, provide JSON test data, and inspect the rendered result alongside the source.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Edit Mustache templates with syntax highlighting, validation, and partial-name completion.
+- Preview rendered output using editable JSON5 test data.
+- Choose from built-in document and email layouts.
+- Load partial templates and optionally include them when rendering.
+- Manage template files with tabs and save, rename, import, and export commands.
+- Store templates in the browser's local storage.
 
-```bash
-ng serve
-```
+The in-app **Help** panel describes Mustache variables, sections, inverted sections, partials, custom delimiters, and comments.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Requirements
 
-## Code scaffolding
+- Node.js and npm
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Getting started
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Install dependencies and start the development server:
 
 ```bash
-ng build
+npm ci
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Open [http://localhost:4200/](http://localhost:4200/) in your browser. The development server reloads when application files change.
 
-## Running unit tests
+## Available commands
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+| Command                | Description                                                                            |
+| ---------------------- | -------------------------------------------------------------------------------------- |
+| `npm start`            | Start the development server.                                                          |
+| `npm run build`        | Create a production build in `dist/`.                                                  |
+| `npm run build:github` | Create a production build configured for GitHub Pages under `/demos/mustache-editor/`. |
+| `npm test`             | Run the unit tests.                                                                    |
+| `npm run watch`        | Rebuild the development configuration when files change.                               |
 
-```bash
-ng test
-```
+## Built-in layouts
 
-## Running end-to-end tests
+The layout selector includes a basic A4 document, a paginated document, a paginated document with a table of contents, and an email layout. Layouts are stored in [`src/assets/layouts/`](src/assets/layouts/).
 
-For end-to-end (e2e) testing, run:
+## Built with
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The application uses Angular, Angular Material, CodeMirror, and Mustache.js.
